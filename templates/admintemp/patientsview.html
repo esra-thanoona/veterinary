@@ -1,0 +1,38 @@
+{% extends 'admintemp/base.html' %}
+
+{% block content %}
+
+<table class="table">
+      <thead class="table table-striped">
+      <tr>
+           <th scope="col">SI NO</th>
+          <th scope="col">Owner name</th>
+          <th scope="col">Pet name</th>
+           <th scope="col">Phone number</th>
+          <th scope="col">Delete</th>
+          <th scope="col">Update</th>
+
+      </tr>
+      </thead>
+
+<tbody>
+      {% for i in data %}
+       <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{i.Owner_name}}</td>
+          <td>{{i.Pet_name}}</td>
+           <td>{{i.phone_number}}</td>
+
+           <td>
+               <a href="{% url 'admpatientdelt' i.id %}" class="btn btn-outline-dark">Delete</a>
+            </td>
+            <td>
+               <a href="{% url 'admpatientupdate' i.id %}" class="btn btn-outline-dark">Update</a>
+            </td>
+
+       </tr>
+</tbody>
+{% endfor %}
+</table>
+
+{% endblock %}

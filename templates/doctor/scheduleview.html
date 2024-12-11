@@ -1,0 +1,43 @@
+{% extends 'doctor/base.html' %}
+{% block content %}
+<table class="table">
+      <thead class="table table-striped">
+      <tr>
+           <th scope="col">SI NO</th>
+          <th scope="col">Name</th>
+          <th scope="col">Day</th>
+           <th scope="col">Time</th>
+
+          <th scope="col">Update</th>
+
+
+      </tr>
+      </thead>
+
+<tbody>
+      {% for i in data %}
+       <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{i.Name}}</td>
+          <td>{{i.Day}}</td>
+           <td>{{i.Time}}</td>
+           {% if i.Name.user_1 == request.user %}
+           <td><a href="{% url 'doctscheduleupdate' i.id %}" class="btn btn-outline-dark">Update</a></td>
+
+           {% else %}
+                 <td>
+                    <h6 style="color:red">Not available</h6>
+                 </td>
+
+          {% endif %}
+
+
+
+
+
+       </tr>
+</tbody>
+{% endfor %}
+</table>
+
+{% endblock %}

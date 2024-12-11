@@ -1,0 +1,17 @@
+{% extends 'admintemp/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div>
+               <center> <h4>DOCTOR SCHEDULE UPDATE</h4></center>
+            </div>
+<form method="POST">
+
+    {% csrf_token %}
+    {{form|crispy}}
+
+
+    <input type="submit" class="btn-btn-dark btn-block" value="Update"/>
+
+
+</form>
+{% endblock %}

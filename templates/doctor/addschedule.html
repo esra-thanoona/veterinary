@@ -1,0 +1,15 @@
+{% extends 'doctor/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+
+
+      {{schedule|crispy}}
+
+
+     <button type="submit" class="btn btn-light">SUBMIT</button>
+
+
+</form>
+{% endblock %}

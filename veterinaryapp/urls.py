@@ -1,0 +1,46 @@
+from django.urls import path
+
+import veterinaryapp
+from veterinaryapp import views
+
+urlpatterns=[
+    path("",views.home,name="home"),
+    path("index",views.index,name="index"),
+    path("doctlogin",views.doctor_login,name="doctlogin"),
+    path("patientslogin",views.patient_login,name="patientslogin"),
+    path("admintemp",views.Admin_temp,name="admintemp"),
+    path("logview", views.login_view, name="logview"),
+    path("doct", views.doctor, name="doct"),
+    path("patients", views.patients, name="patients"),
+    path("admpatientsview", views.patients_view, name="admpatientsview"),
+    path("admdoctview", views.doct_view, name="admdoctview"),
+    path("admpatientupdate/<int:id>/", views.patients_update, name="admpatientupdate"),
+    path("admpatientdelt/<int:id>/", views.patients_delt, name="admpatientdelt"),
+    path("admdoctupdate/<int:id>/", views.doct_update, name="admdoctupdate"),
+    path("admdoctdelt/<int:id>/", views.doct_delt, name="admdoctdelt"),
+    path("patientdoctview", views.patient_doct_view, name="patientdoctview"),
+    path("doctaddschedule", views.add_doct_schedule, name="doctaddschedule"),
+    path("doctscheduleview", views.doct_schedule_view, name="doctscheduleview"),
+    path("doctscheduleupdate/<int:id>/", views.doct_schedule_update, name="doctscheduleupdate"),
+    path("doctscheduledelt/<int:id>/", views.doct_schedule_delt, name="doctscheduledelt"),
+    path("admndoctscheduleview", views.adm_doct_schedule_view, name="admndoctscheduleview"),
+    path("admscheduleupdate/<int:id>/", views.adm_doct_shchedule_update, name="admscheduleupdate"),
+    path("patientdoctscheduleview/<int:id>/", views.patient_doct_schedule_view, name="patientdoctscheduleview"),
+    path("appoint/<int:id>/", views.appoint, name="appoint"),
+    path("admnpatientrqstview", views.adm_patient_rqst_view, name="admnpatientrqstview"),
+    path("approve/<int:id>/", views.approve, name="approve"),
+    path("reject/<int:id>/", views.reject, name="reject"),
+    path("patientsappointview", views.patients_appoint_view, name="patientsappointview"),
+    path("patientappointdel/<int:id>/", views.patients_appoint_delt, name="patientappointdel"),
+    path("doctpatientsappointview", views.doct_patients_appoint_view, name="doctpatientsappointview"),
+    path("bill/<int:id>/", views.generate_bill, name="bill"),
+    path("doctbillview", views.doct_bill_view, name="doctbillview"),
+    path("patientsbillview", views.patients_bill_view, name="patientsbillview"),
+    path("prescription/<int:id>/", views.prescription, name="prescription"),
+    path("doctprescview", views.doct_presc_view, name="doctprescview"),
+    path("doctprescdelt/<int:id>/", views.doct_presc_delt, name="doctprescdelt"),
+    path("doctbilldelt/<int:id>/", views.doct_bill_delt, name="doctbilldelt"),
+    path("patientprescview", views.patients_presc_view, name="patientprescview"),
+    path("patientbillprescview", views.patients_bill_precs_view, name="patientbillprescview"),
+
+]

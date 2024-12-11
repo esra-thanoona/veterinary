@@ -1,0 +1,83 @@
+{% extends 'patients/base.html' %}
+{% block content %}
+<table class="table">
+      <thead class="table table-striped">
+      <tr>
+           <th scope="col">SI NO</th>
+          <th scope="col">Doctor Name</th>
+          <th scope="col">Day</th>
+           <th scope="col">Time</th>
+          <th scope="col">Patient Name</th>
+          <th scope="col">Dob</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Category</th>
+          <th scope="col">Disease</th>
+          <th scope="col">Approve or Reject</th>
+          <th scope="col">Cancel Appointmente</th>
+
+<!--           <th scope="col">View Bill</th>-->
+<!--          <th scope="col">View Prescription</th>-->
+
+      </tr>
+      </thead>
+
+<tbody>
+      {% for i in data %}
+         {% if i.Name.user_2 == request.user %}
+       <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{i.approve.Name}}</td>
+          <td>{{i.approve.Day}}</td>
+           <td>{{i.approve.Time}}</td>
+           <td>{{i.Name}}</td>
+           <td>{{i.dob}}</td>
+           <td>{{i.gender}}</td>
+           <td>{{i.categories}}</td>
+           <td>{{i.Disease}}</td>
+
+
+            {% if i.approve.status == 2 %}
+                    <td>
+                         <h6 style="color:blue">Confirmed</h6>
+                    </td>
+
+                {% elif i.approve.status == 0 %}
+                    <td>
+                          <h6 style="color:red">Rejected</h6>
+                    </td>
+                {% elif i.approve.status == 1 %}
+            <td>
+                          <h6 style="color:red">pending</h6>
+                    </td>
+
+
+
+           {% endif %}
+             {% if i.Name.user_2 == request.user %}
+                 <td><a href="{% url 'patientappointdel' i.id %}" class="btn btn-outline-dark">Cancel</a></td>
+
+               {% else %}
+                   <td>not available</td>
+
+              {% endif %}
+<!--              {% if i.Name.user_2 == request.user %}-->
+<!--              {% if i.approve.status == 2 %}-->
+<!--                    <td>-->
+<!--                       <a href="{% url 'patientsbillview' %}" class="btn btn-outline-dark">View Bill</a>-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                       <a href="{% url 'patientprescview' %}" class="btn btn-outline-dark">View Prescription</a>-->
+<!--                    </td>-->
+<!--              {% endif %}-->
+<!--           {% endif %}-->
+
+
+       </tr>
+ {% endif %}
+</tbody>
+{% endfor %}
+</table>
+
+
+
+{% endblock %}

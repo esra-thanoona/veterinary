@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{Login_form|crispy}}
+    {{Doctor_form|crispy}}
+    <button type="submit" class="btn btn-light">SUBMIT</button>
+
+</form>
+
+
+
+{% endblock %}

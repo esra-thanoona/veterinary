@@ -1,0 +1,50 @@
+{% extends 'patients/base.html' %}
+{% block content %}
+<table class="table">
+      <thead class="table table-striped">
+      <tr>
+           <th scope="col">SI NO</th>
+          <th scope="col">Name</th>
+          <th scope="col">Day</th>
+           <th scope="col">Time</th>
+
+          <th scope="col">Appointment</th>
+
+
+      </tr>
+      </thead>
+
+<tbody>
+
+
+      {% for i in data %}
+       <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{i.Name}}</td>
+          <td>{{i.Day}}</td>
+           <td>{{i.Time}}</td>
+           {% if i.status == 0 %}
+
+              <td> <a href="{% url 'appoint' i.id %}" class="btn btn-outline-dark"> Book Appointment</a></td>
+           {% elif i.status == 1 %}
+           <td>Pending</td>
+
+           {% elif i.status == 2 %}
+
+              <td>  booked</td>
+           {% endif %}
+
+       </tr>
+
+
+
+</tbody>
+{% endfor %}
+
+
+
+</table>
+
+
+
+{% endblock %}

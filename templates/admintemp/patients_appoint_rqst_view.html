@@ -1,0 +1,72 @@
+{% extends 'admintemp/base.html' %}
+{% block content %}
+
+<table class="table">
+    <thead class="table table-striped">
+        <tr>
+            <th scope="col">sl No</th>
+            <th scope="col">Doctor Name</th>
+            <th scope="col">Date</th>
+            <th scope="col">Time</th>
+            <th scope="col">Patient Name</th>
+            <th scope="col">DOB</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Category</th>
+            <th scope="col">Disease</th>
+            <th scope="col">Status</th>
+            <th scope="col">Approve or Reject</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for i in join %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ i.approve.Name }}</td>
+            <td>{{ i.approve.Day }}</td>
+            <td>{{ i.approve.Time }}</td>
+            <td>{{ i.Name }}</td>
+            <td>{{ i.dob }}</td>
+            <td>{{ i.gender }}</td>
+            <td>{{ i.categories }}</td>
+            <td>{{ i.Disease }}</td>
+            <td>{{ i.approve.status }}</td>
+             {% if i.approve.status == 0 %}
+            <td>   <p>No bookings</p> </td>
+
+
+
+
+
+            {% elif i.approve.status == 1 %}
+            <td>
+                <a href="{% url 'approve' i.id %}" >
+                    {% csrf_token %}
+                    {{i.approve.status}}
+                    <button type="submit" class="btn btn-outline-dark">Approve</button></a>
+
+
+
+                <a href="{% url 'reject' i.id %}" >
+                    {% csrf_token %}
+                    {{i.approve.status}}
+                    <button type="submit" class="btn btn-outline-dark">Reject</button>
+                </a>
+            </td>
+            {% elif i.approve.status == 2 %}
+            <td>
+                <h5 style="color: blue">Approved</h5>
+            </td>
+            {% elif i.approve.status == 3 %}
+            <td>
+                <h5 style="color: red">rejected</h5>
+            </td>
+
+
+            {% endif %}
+
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

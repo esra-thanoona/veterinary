@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+{% extends "patients/base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+
+<div class="col-lg-8">
+    <div class="card">
+        <div class="card-header"><strong>Join </strong></div>
+        <div class="card-body card-block">
+            <form method="post">
+
+                {% csrf_token %}
+
+                 <div class="form-group">
+                    <label class=" form-control-label">Doctor</label>
+                    <input  required  class="form-control" readonly value="{{schedule.Name}}">
+
+                </div>
+
+                <div class="form-group">
+                    <label class=" form-control-label">date</label>
+                    <input  required  class="form-control" readonly value="{{schedule.Day}}">
+
+                </div>
+                 <div class="form-group">
+                    <label class=" form-control-label">time</label>
+                    <input  required  class="form-control" readonly value="{{schedule.Time}}">
+
+                </div>
+
+                 <div class="form-group">
+                    <label class=" form-control-label">Pet name</label>
+                    <input  required  class="form-control" readonly value="{{u.Pet_name}}">
+
+                </div>
+
+                <div class="form-group">
+                    <label for="company" class=" form-control-label">Dob</label>
+               <input type="date" id="company" name="dob">
+                </div><br>
+                <div class="form-group">
+                    <label for="company" class=" form-control-label">Category</label>
+                    <select name="categories" id="cat">
+                            <option value="Dog">DOG</option>
+                            <option value="Cat">CAT</option>
+                            <option value="RABBIT">RABBIT</option>
+                            <option value="BIRDS">BIRDS</option>
+                        <option value="FISH">FISH</option>
+                        <option value="RODENTS">RODENTS</option>
+                    </select>
+
+                </div>
+                <br>
+                 <div class="form-group">
+                    <label for="company" class=" form-control-label">Gender:</label>
+                   <input type="radio" id="gen" name="gender" value="Male">Male
+                     <input type="radio" id="ge" name="gender" value="Female">Female
+                </div><br>
+                 <div class="form-group">
+                    <label for="company" class=" form-control-label">Diseases</label>
+                    <textarea cols="5" rows="7" required id="dis" class="form-control" name="disease">
+                </textarea>
+                </div>
+
+
+
+                <div class="form-actions form-group ">
+                    <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                </div>
+
+
+
+            </form>
+        </div>
+
+    </div>
+</div>
+ {% for i in messages %}
+               <div class="alert alert-primary" role="alert">
+                   {{i.message}}
+              </div>
+        {% endfor %}
+
+
+
+{% endblock %}
+
+

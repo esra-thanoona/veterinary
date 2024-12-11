@@ -1,0 +1,36 @@
+{% extends 'admintemp/base.html' %}
+{% block content %}
+<table class="table">
+      <thead class="table table-striped">
+      <tr>
+           <th scope="col">SI NO</th>
+          <th scope="col">Name</th>
+          <th scope="col">Day</th>
+           <th scope="col">Time</th>
+
+          <th scope="col">Update</th>
+          <th scope="col">Delete</th>
+
+      </tr>
+      </thead>
+
+<tbody>
+      {% for i in data %}
+       <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{i.Name}}</td>
+          <td>{{i.Day}}</td>
+           <td>{{i.Time}}</td>
+            <td><a href="{% url 'admscheduleupdate' i.id %}" class="btn btn-outline-dark">Update</a></td>
+
+              <td><a href="{% url 'doctscheduledelt' i.id %}" class="btn btn-outline-dark">Delete</a></td>
+
+
+
+
+       </tr>
+</tbody>
+{% endfor %}
+</table>
+
+{% endblock %}
